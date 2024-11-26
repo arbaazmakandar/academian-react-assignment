@@ -267,27 +267,29 @@ const ResumePDF = forwardRef(
     }, [activeColor]);
 
     return (
-      <div className={styles.container}>
-        <div className={styles.header}>
-          <p className={styles.heading}>Name</p>
-          <p className={styles.subHeading}>Web Developer</p>
+      <div ref={ref}>
+        <div className={styles.container} ref={containerRef}>
+          <div className={styles.header}>
+            <p className={styles.heading}>Name</p>
+            <p className={styles.subHeading}>Web Developer</p>
 
-          <div className={styles.links}>
-            <a className={styles.link}>
-              <AtSign /> Email@gmail.com
-            </a>
-            <a className={styles.link}>
-              <Phone />
-              123456789
-            </a>
-            <a className={styles.link}>
-              <Linkedin />
-              https://linkedin.in/aswejf
-            </a>
-            <a className={styles.link}>
-              <GitHub />
-              https://github.com/whdiah
-            </a>
+            <div className={styles.links}>
+              <a className={styles.link}>
+                <AtSign /> Email@gmail.com
+              </a>
+              <a className={styles.link}>
+                <Phone />
+                123456789
+              </a>
+              <a className={styles.link}>
+                <Linkedin />
+                https://linkedin.in/aswejf
+              </a>
+              <a className={styles.link}>
+                <GitHub />
+                https://github.com/whdiah
+              </a>
+            </div>
           </div>
         </div>
       </div>

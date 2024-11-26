@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import styles from "./Body.module.css";
 import Form from "../Form/Form";
 import ResumePDF from "../ResumePDF/ResumePDF";
+import { useReactToPrint } from "react-to-print";
 
 const Body = () => {
   const formFields = {
@@ -11,7 +12,8 @@ const Body = () => {
     skills: "Skills",
     projects: "Projects",
   };
-  const resumeRef = useRef();
+  const contentRef = useRef();
+  const reactToPrintFn = useReactToPrint({ contentRef });
 
   const [resumeInformation, setResumeInformation] = useState({
     [formFields.personalIonf]: {
@@ -49,7 +51,10 @@ const Body = () => {
             <span className={styles.themewhite} />
             <span className={styles.themeblack} />
           </div>
-          <button className={styles.downloadbutton}>Download</button>
+
+          <button className={styles.downloadbutton} onClick={reactToPrintFn}>
+            Download
+          </button>
         </div>
         <div className={styles.mainbody}>
           <Form
@@ -58,7 +63,7 @@ const Body = () => {
             setResumeInformation={setResumeInformation}
           />
           <ResumePDF
-            ref={resumeRef}
+            ref={contentRef}
             formFields={formFields}
             resumeInformation={resumeInformation}
             activeColor={["white", "black"]}
