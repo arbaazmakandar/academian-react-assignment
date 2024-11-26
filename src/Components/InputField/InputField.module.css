@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+label {
+  font-size: 1.1rem;
+  font-weight: 400;
+}
+
+input {
+  padding: 10px 13px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+input:focus {
+  border: 1px solid aqua;
+}

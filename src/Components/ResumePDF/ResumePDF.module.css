@@ -1,0 +1,48 @@
+.container {
+  min-width: 500px;
+  flex: 1;
+  height: fit-content;
+  height: 1000px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+  color: rgb(0, 187, 255);
+  margin-top: 30px;
+  padding: 30px;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.heading {
+  font-size: 3.9rem;
+  font-weight: 450;
+  text-transform: capitalize;
+  color: black;
+}
+
+.subHeading {
+  font-size: 1.1rem;
+  font-weight: 450;
+}
+
+.links {
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+.link {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-family: monospace;
+}
+.link svg {
+  height: 15px;
+  width: 15px;
+}
