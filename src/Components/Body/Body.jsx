@@ -16,7 +16,7 @@ const Body = () => {
   const reactToPrintFn = useReactToPrint({ contentRef });
 
   const [resumeInformation, setResumeInformation] = useState({
-    [formFields.personalIonf]: {
+    [formFields.personalInfo]: {
       id: formFields.personal,
       sectionTitle: formFields.personal,
       detail: {},

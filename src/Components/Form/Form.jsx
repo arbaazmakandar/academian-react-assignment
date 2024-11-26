@@ -44,14 +44,14 @@ const Form = ({ formFields, resumeInformation, setResumeInformation }) => {
             setValues((prev) => ({ ...prev, email: event.target.value }))
           }
         />
-        <InputField
+        {/* <InputField
           label="Phone : "
           type={"tel"}
           value={values.phoneNumber}
           onChange={(event) =>
             setValues((prev) => ({ ...prev, phoneNumber: event.target.value }))
           }
-        />
+        /> */}
         <InputField
           label="LinkedIn : "
           type="url"
@@ -207,7 +207,7 @@ const Form = ({ formFields, resumeInformation, setResumeInformation }) => {
 
   const handleSubmission = () => {
     switch (formFields[activeFormField]) {
-      case formFields.basicInfo: {
+      case formFields.personalInfo: {
         const tempDetail = {
           name: values.name,
           linkedin: values.linkedin,

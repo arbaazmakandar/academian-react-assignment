@@ -14,6 +14,8 @@ const ResumePDF = forwardRef(
   ({ resumeInformation, formFields, activeColor }, ref) => {
     const containerRef = useRef();
 
+    console.log(resumeInformation["Personal Info"].detail);
+
     const [columns, setColumns] = useState([[], []]);
     const [source, setSource] = useState("");
     const [target, seTarget] = useState("");
@@ -191,61 +193,6 @@ const ResumePDF = forwardRef(
           </div>
         </div>
       ),
-      [formFields.achievement]: (
-        <div
-          key={"achievement"}
-          draggable
-          onDragOver={() => seTarget(info.achievement?.id)}
-          onDragEnd={() => setSource(info.achievement?.id)}
-          className={`${styles.section} ${
-            info.achievement?.sectionTitle ? "" : styles.hidden
-          }`}
-        >
-          <div className={styles.sectionTitle}>
-            {info.achievement?.sectionTitle}
-          </div>
-          <div className={styles.content}>
-            {info.achievement?.points?.length > 0 ? (
-              <ul className={styles.numbered}>
-                {info.achievement?.points?.map((elem, index) => (
-                  <li className={styles.point} key={elem + index}>
-                    {elem}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <span />
-            )}
-          </div>
-        </div>
-      ),
-    };
-
-    const swapSourceTarget = (source, target) => {
-      if (!source || !target) return;
-      const tempColumns = [[...columns[0]], [...columns[1]]];
-
-      let sourceRowIndex = tempColumns[0].findIndex((item) => item === source);
-      let sourceColumnIndex = 0;
-      if (sourceRowIndex < 0) {
-        sourceColumnIndex = 1;
-        sourceRowIndex = tempColumns[1].findIndex((item) => item === source);
-      }
-
-      let targetRowIndex = tempColumns[0].findIndex((item) => item === target);
-      let targetColumnIndex = 0;
-      if (targetRowIndex < 0) {
-        targetColumnIndex = 1;
-        targetRowIndex = tempColumns[1].findIndex((item) => item === target);
-      }
-
-      const tempSource = tempColumns[sourceColumnIndex][sourceRowIndex];
-      tempColumns[sourceColumnIndex][sourceRowIndex] =
-        tempColumns[targetColumnIndex][targetRowIndex];
-
-      tempColumns[targetColumnIndex][targetRowIndex] = tempSource;
-
-      setColumns(tempColumns);
     };
 
     useEffect(() => {
@@ -254,10 +201,6 @@ const ResumePDF = forwardRef(
         [formFields.workExp, formFields.skills],
       ]);
     }, []);
-
-    useEffect(() => {
-      swapSourceTarget(source, target);
-    }, [source]);
 
     useEffect(() => {
       const container = containerRef.current;
@@ -270,24 +213,23 @@ const ResumePDF = forwardRef(
       <div ref={ref}>
         <div className={styles.container} ref={containerRef}>
           <div className={styles.header}>
-            <p className={styles.heading}>Name</p>
+            <p className={styles.heading}>
+              {resumeInformation["Personal Info"].detail.name}
+            </p>
             <p className={styles.subHeading}>Web Developer</p>
 
             <div className={styles.links}>
               <a className={styles.link}>
-                <AtSign /> Email@gmail.com
+                <AtSign /> {resumeInformation["Personal Info"].detail.email}
               </a>
-              <a className={styles.link}>
-                <Phone />
-                123456789
-              </a>
+
               <a className={styles.link}>
                 <Linkedin />
-                https://linkedin.in/aswejf
+                {resumeInformation["Personal Info"].detail.linkedin}
               </a>
               <a className={styles.link}>
                 <GitHub />
-                https://github.com/whdiah
+                {resumeInformation["Personal Info"].detail.github}
               </a>
             </div>
           </div>
